@@ -9,12 +9,12 @@ Consigli:
 Iniziate il lavoro con html base, implementate la logica e le iterazioni con utente. Soltanto quando siete sicuri che funziona tutto passate all'aspetto grafico.
 */
 
-// Compilazione km da percorrere e età cliente
-// Button
+// Bottoni
+// Bottone Genera
 document.getElementById("form-btn").addEventListener("click",
     function () {
 
-        // prendo i dati inseriti dall'utente
+        // Prendo i dati inseriti dall'utente
         const nomeCognome = document.getElementById('nome-cognome').value;
         console.log(nomeCognome);
 
@@ -28,18 +28,25 @@ document.getElementById("form-btn").addEventListener("click",
         const prezzo = trattakm * 0.21
         console.log(prezzo);
         
+        const carrozza = Math.floor(Math.random() * 10) + 1;
+        console.log(carrozza);
+        const codiceCP = Math.floor(Math.random() * 99998) + 1;
+        console.log(carrozza);
         let sconto = 0;
         let scontoApplicato = 0;
+        let offerta = 'Biglietto Standard';
 
         // Calcolo sconto
         if (etaCliente === 'minorenne') {
             sconto = 20;
+            offerta = 'Sconto Minorenni'
             console.log(sconto);
         
             scontoApplicato = (prezzo * sconto) / 100;
             console.log(scontoApplicato);
         } else if (etaCliente === 'over65') {
             sconto = 40;
+            offerta = 'Sconto Over65'
             console.log(sconto);
         
             scontoApplicato = (prezzo * sconto) / 100;
@@ -51,11 +58,15 @@ document.getElementById("form-btn").addEventListener("click",
         console.log(prezzoFinale);
 
         document.getElementById('price').innerHTML = prezzoFinale.toFixed(2);
-
         document.getElementById('name').innerHTML = nomeCognome;
+        document.getElementById('num-carrozza').innerHTML = carrozza;
+        document.getElementById('codice-CP').innerHTML = codiceCP;
+        document.getElementById('offerta').innerHTML = offerta;
+        document.getElementById("stampa-biglietto").classList.remove("none")
 
 });
 
+//Bottone "annulla"
 document.getElementById("clear-btn").addEventListener("click",
     function () {
         const nomeCognome = document.getElementById('nome-cognome');
