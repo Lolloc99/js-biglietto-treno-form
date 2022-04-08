@@ -10,15 +10,63 @@ Iniziate il lavoro con html base, implementate la logica e le iterazioni con ute
 */
 
 // Compilazione km da percorrere e età cliente
-const nomeCognome = document.getElementById('nome-cognome').value;
-const trattakm= document.getElementById('percorso').value;
+// Button
+document.getElementById("form-btn").addEventListener("click",
+    function () {
 
-const prezzo = trattakm * 0.21
-console.log(prezzo);
+        // prendo i dati inseriti dall'utente
+        const nomeCognome = document.getElementById('nome-cognome').value;
+        console.log(nomeCognome);
 
-// Calcolo prezzo biglietto
-// prezzo standard = NumerKM x 0.21€
-// Se selezionato "minorenne" allora Prezzo - 20%
-// Se selezionato "over65" allora Prezzo - 40%
+        const trattakm= document.getElementById('percorso').value;
+        console.log(trattakm);
 
-// stampare il tutto su schermo negli appositi spazi
+        const etaCliente= document.getElementById('etaCliente').value;
+        console.log(etaCliente);
+
+        // Dati
+        const prezzo = trattakm * 0.21
+        console.log(prezzo);
+        
+        let sconto = 0;
+        let scontoApplicato = 0;
+
+        // Calcolo sconto
+        if (etaCliente === 'minorenne') {
+            sconto = 20;
+            console.log(sconto);
+        
+            scontoApplicato = (prezzo * sconto) / 100;
+            console.log(scontoApplicato);
+        } else if (etaCliente === 'over65') {
+            sconto = 40;
+            console.log(sconto);
+        
+            scontoApplicato = (prezzo * sconto) / 100;
+            console.log(scontoApplicato);
+        }
+
+        // Calcolo prezzo finale
+        const prezzoFinale = prezzo - scontoApplicato;
+        console.log(prezzoFinale);
+
+        document.getElementById('price').innerHTML = prezzoFinale.toFixed(2);
+
+        document.getElementById('name').innerHTML = nomeCognome;
+
+});
+
+document.getElementById("clear-btn").addEventListener("click",
+    function () {
+        const nomeCognome = document.getElementById('nome-cognome');
+        console.log(nomeCognome);
+        nomeCognome.value = "";
+
+        const trattakm= document.getElementById('percorso');
+        console.log(trattakm);
+        trattakm.value = "";
+
+        const etaCliente= document.getElementById('etaCliente');
+        console.log(etaCliente);
+        etaCliente.value = "";
+});
