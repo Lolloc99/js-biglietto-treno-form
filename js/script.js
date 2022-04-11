@@ -30,7 +30,7 @@ document.getElementById("form-btn").addEventListener("click",
         
         const carrozza = Math.floor(Math.random() * 10) + 1;
         console.log(carrozza);
-        const codiceCP = Math.floor(Math.random() * 99998) + 1;
+        const codiceCP = Math.floor(Math.random() * (100000 - 90000)) + 90000;
         console.log(carrozza);
         let sconto = 0;
         let scontoApplicato = 0;
@@ -63,8 +63,8 @@ document.getElementById("form-btn").addEventListener("click",
         document.getElementById('codice-CP').innerHTML = codiceCP;
         document.getElementById('offerta').innerHTML = offerta;
         document.getElementById("stampa-biglietto").classList.remove("none")
-
-});
+    }
+);
 
 //Bottone "annulla"
 document.getElementById("clear-btn").addEventListener("click",
@@ -80,4 +80,6 @@ document.getElementById("clear-btn").addEventListener("click",
         const etaCliente= document.getElementById('etaCliente');
         console.log(etaCliente);
         etaCliente.value = "";
+
+        document.getElementById("stampa-biglietto").classList.add("none")
 });
